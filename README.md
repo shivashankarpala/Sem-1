@@ -1,1 +1,1 @@
-readme bruh
+Consistency is Key.
