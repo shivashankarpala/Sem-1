@@ -1,6 +1,5 @@
 from sympy import *
 from sympy.abc import x
-from math import inf
 
-l = Limit((1 + 1 / x)**x, x, inf).doit()
-display(l)
+l = Limit((5 *  x**4 - 4 * x**2 -1) / (10 - x - 9 * x**3), x, 1).doit()
+print(l)

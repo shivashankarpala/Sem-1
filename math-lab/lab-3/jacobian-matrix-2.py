@@ -1,25 +1,34 @@
 from sympy import *
-from sympy.abc import rho, phi, theta
+from sympy.abc import x, y, z
 
-X = rho * cos(phi)* sin(theta);
-Y = rho * cos(phi) * cos(theta);
-Z = rho * sin(phi);
+u = x + 3 * y**2 - z**3
+v = 4 * x**2 * y * z 
+w = 2 * z**2 - x * y
 
-dx = Derivative(X, rho).doit() 
-dy = Derivative(Y, rho).doit() 
-dz = Derivative(Z, rho).doit(); 
+dux = diff(u, x)
+duy = diff(u, y) 
+duz = diff(u, z);
 
-dx1 = Derivative(X, phi).doit() 
-dy1 = Derivative(Y, phi).doit() 
-dz1 = Derivative(Z, phi).doit(); 
+dvx = diff(v, x) 
+dvy = diff(v, y) 
+dvz = diff(v, z);
 
-dx2 = Derivative(X, theta).doit()
-dy2 = Derivative(Y, theta).doit()
-dz2 = Derivative(Z, theta).doit();
+dwx = diff(w, x)
+dwy = diff(w, y)
+dwz = diff(w, z);
 
-J = Matrix([[dx, dy, dz], [dx1, dy1, dz1], [dx2,dy2,dz2]]); 
+J = Matrix([[dux, duy, duz], [dvx, dvy, dvz], [dwx, dwy, dwz]]);
+print("\nThe Jacobian matrix is \n")
+display(J)
 
-print("\nThe Jacobian matrix is ")
-display (J)
-print("\nJ = ")
-display(simplify(Determinant(J).doit()))
+jac = det(J).doit()
+print("\nJ = ", jac)
+
+J1 = J.subs([(x, 1), (y, -1), (z, 0)])
+print("\nJac at (1, -1, 0) = ")
+
+jac1 = det(J1).doit()
+display(jac1)
+
+
+

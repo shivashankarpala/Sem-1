@@ -1,9 +1,9 @@
 from sympy import *
 from sympy.abc import x, y, z
 
-u = x + 3 * y**2 - z**3
-v = 4 * x**2 * y * z 
-w = 2 * z**2 - x * y
+u = x * y / z
+v = y * z / x
+w = z * x / y
 
 dux = diff(u, x)
 duy = diff(u, y) 
@@ -23,12 +23,3 @@ display(J)
 
 jac = det(J).doit()
 print("\nJ = ", jac)
-
-J1 = J.subs([(x, 1), (y, -1), (z, 0)])
-print("\nJac at (1, -1, 0) = ")
-
-jac1 = det(J1).doit()
-display(jac1)
-
-
-
